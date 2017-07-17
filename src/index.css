@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+label {
+    display: block;
+    margin: 6px;
+}
+
+input, textarea, button {
+    margin: 6px;
+    display: block;
+}
+
+.message {
+    padding: 12px 6px;
+}
+
+.message-success {
+    background-color: #5CB85C;
+    color: white;
+}
+
+.form-error {
+    background-color: #d9534f;
+    color: white;
+    margin: 0 6px;
+    padding: 6px;
+    display: inline-block;
+}
