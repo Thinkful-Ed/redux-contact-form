@@ -23,9 +23,12 @@ input, textarea, button {
     color: white;
 }
 
-.form-error {
+.message-error, .form-error {
     background-color: #d9534f;
     color: white;
+}
+
+.form-error {
     margin: 0 6px;
     padding: 6px;
     display: inline-block;

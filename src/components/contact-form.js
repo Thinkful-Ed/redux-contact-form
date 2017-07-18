@@ -42,6 +42,11 @@ export class ContactForm extends React.Component {
                         })
                     );
                 }
+                return Promise.reject(
+                    new SubmissionError({
+                        _error: 'Error submitting message'
+                    })
+                );
             });
     }
     render() {
@@ -53,12 +58,21 @@ export class ContactForm extends React.Component {
                 </div>
             );
         }
+
+        let errorMessage;
+        if (this.props.error) {
+            errorMessage = (
+                <div className="message message-error">{this.props.error}</div>
+            );
+        }
+
         return (
             <form
                 onSubmit={this.props.handleSubmit(values =>
                     this.onSubmit(values)
                 )}>
                 {successMessage}
+                {errorMessage}
                 <Field
                     name="name"
                     type="text"
