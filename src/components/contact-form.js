@@ -1,5 +1,5 @@
 import React from 'react';
-import {reduxForm, Field, SubmissionError} from 'redux-form';
+import {reduxForm, Field, SubmissionError, focus} from 'redux-form';
 import Input from './input';
 import {required, nonEmpty, email} from '../validators';
 
@@ -49,6 +49,7 @@ export class ContactForm extends React.Component {
                 );
             });
     }
+
     render() {
         let successMessage;
         if (this.props.submitSucceeded) {
@@ -103,11 +104,7 @@ export class ContactForm extends React.Component {
                 />
                 <button
                     type="submit"
-                    disabled={
-                        this.props.pristine ||
-                        this.props.submitting ||
-                        this.props.invalid
-                    }>
+                    disabled={this.props.pristine || this.props.submitting}>
                     Send message
                 </button>
             </form>
@@ -116,5 +113,7 @@ export class ContactForm extends React.Component {
 }
 
 export default reduxForm({
-    form: 'contact'
+    form: 'contact',
+    onSubmitFail: (errors, dispatch) =>
+        dispatch(focus('contact', Object.keys(errors)[0]))
 })(ContactForm);
